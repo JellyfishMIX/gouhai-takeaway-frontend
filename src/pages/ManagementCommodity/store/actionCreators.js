@@ -1,10 +1,22 @@
 import {constants} from './index';
-// import axios from 'axios';
+import axios from 'axios';
 import {fromJS} from 'immutable';
 
 // 从服务器加载商品列表
-const loadCommodity = (commodityList) => ({
-    type: constants.LOAD_COMMODITY_LIST,
+const loadCommodityList = () => {
+    return (dispatch) => {
+        axios.get('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/getcommoditylist').then((res) => {
+            // console.log(res);
+            dispatch(_loadCommodityListToLocal(res.data.commodityList));
+        }).catch((err) => {
+            console.log('errMsg: ' + err);
+        });
+    }
+};
+
+// 把从服务器接收到的商品列表加载到本地
+const _loadCommodityListToLocal = (commodityList) => ({
+    type: constants.LOAD_COMMODITY_LIST_TO_LOCAL,
     commodityList:  fromJS(commodityList)
 });
 
@@ -20,15 +32,11 @@ const switchTriggerPost = (item) => {
     return (dispatch) => {
         let temObject = item.toJS();
         temObject.enable = !item.get('enable');
-        const myStr = JSON.stringify({    // 指示灯，判断发送指令是什么
-            type: "changecaidan",
-            data: JSON.stringify(temObject)
+        axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/updatecommodity', temObject).then(() => {
+            console.log("axios.post success");
+        }).catch((err) => {
+            console.log("errMsg: " + err.toString());
         });
-        let ws = new WebSocket("ws://hxsmallgame.cn:3006");
-        ws.onopen = () => {
-            console.log('connected');
-            ws.send(myStr);
-        };
     }
 };
 
@@ -60,16 +68,11 @@ const currentPriceInputChange = (value) => ({
 // 点击"保存"触发，保存编辑数据至本地store，同时post给服务器，并退出编辑模式
 const onSave = (id, temCommodity) => {
     return (dispatch) => {
-        const myCommodity = temCommodity.toJS();
-        const myStr = JSON.stringify({    // 指示灯，判断发送指令是什么
-            type: "changecaidan",
-            data: JSON.stringify(myCommodity)
+        axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/updatecommodity', temCommodity.toJS()).then(() => {
+            console.log("axios.post success");
+        }).catch((err) => {
+            console.log("errMsg: " + err.toString());
         });
-        let ws = new WebSocket("ws://hxsmallgame.cn:3006");
-        ws.onopen = () => {
-            console.log('connected');
-            ws.send(myStr);
-        };
         dispatch(_SaveTemCommodityToLocal(id));
     }
 };
@@ -97,17 +100,13 @@ const onDeleteCommodity = (id) => {
     return (dispatch) => {
         const isConfirm = window.confirm('确认删除？');
         if (isConfirm) {
-            const myStr = JSON.stringify({    // 指示灯，判断发送指令是什么
-                type: "deletecaidan",
-                data: JSON.stringify({
-                    id: id
-                })
+            axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/deletecommodity', {
+                id: id
+            }).then(() => {
+                console.log("axios.post success");
+            }).catch((err) => {
+                console.log("errMsg: " + err.toString());
             });
-            let ws = new WebSocket("ws://hxsmallgame.cn:3006");
-            ws.onopen = () => {
-                console.log('connected');
-                ws.send(myStr);
-            };
             dispatch(_deleteLocalCommodity(id));
         }
     }
@@ -126,7 +125,7 @@ const onMask = (id) => ({
 });
 
 export {
-    loadCommodity,
+    loadCommodityList,
     switchTrigger,
     switchTriggerPost,
     underRevision,

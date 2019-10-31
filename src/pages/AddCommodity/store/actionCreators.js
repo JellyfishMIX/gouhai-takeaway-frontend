@@ -1,5 +1,5 @@
 import {constants} from './index';
-// import axios from 'axios';
+import axios from 'axios';
 // import {fromJS} from 'immutable';
 
 // CommodityTitleInput的value改变时
@@ -35,15 +35,12 @@ const commodityEnableSwitch = (newIsTurnOn) => ({
 // 点击"添加"时触发，添加数据至服务器
 const onPost = (immutableCommodity) => {
     return (dispatch) => {
-        const myStr = JSON.stringify({
-            type: "addcaidan",
-            data: JSON.stringify(immutableCommodity.toJS())
+        console.log(immutableCommodity.toJS());
+        axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/addcommodity', immutableCommodity.toJS()).then(() => {
+            console.log("axios.post success");
+        }).catch((err) => {
+            console.log("errMsg: " + err.toString());
         });
-        let ws = new WebSocket("ws://hxsmallgame.cn:3006");
-        ws.onopen = () => {
-            alert('添加成功');
-            ws.send(myStr);
-        };
         dispatch(onCancel());
     };
 };

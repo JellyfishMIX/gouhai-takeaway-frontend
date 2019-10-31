@@ -3,7 +3,7 @@ import {fromJS} from 'immutable';
 
 const defaultState = fromJS({
     password: '',
-    isLogin: false
+    isLogin: true
 });
 
 export default (state = defaultState, action) => {

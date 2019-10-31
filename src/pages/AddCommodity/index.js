@@ -101,14 +101,24 @@ const mapDispatchToProps = (dispatch) => ({
 
     // OriginalPriceInput的value改变时
     handleOriginalPriceInputChange(e) {
-        const value = e.target.value;
-        dispatch(actionCreators.originalPriceInputChange(value));
+        if (e.target.value !== '') {
+            const value = parseInt(e.target.value);
+            dispatch(actionCreators.originalPriceInputChange(value));
+        } else {
+            const value = e.target.value;
+            dispatch(actionCreators.originalPriceInputChange(value));
+        }
     },
 
     // CurrentPriceInput的value改变时
     handleCurrentPriceInputChange(e) {
-        const value = e.target.value;
-        dispatch(actionCreators.currentPriceInputChange(value));
+        if (e.target.value !== '') {
+            const value = parseInt(e.target.value);
+            dispatch(actionCreators.currentPriceInputChange(value));
+        } else {
+            const value = e.target.value;
+            dispatch(actionCreators.currentPriceInputChange(value));
+        }
     },
 
     // CommodityImgURLInput的value改变时

@@ -136,19 +136,20 @@ class ManagementCommodity extends Component {
     }
 
     componentDidMount() {
-        const typeStr = JSON.stringify({    // 指示灯，判断发送指令是什么
-            type: "caidan"
-        });
-        let ws = new WebSocket("ws://hxsmallgame.cn:3006");
-        ws.onopen = () => {
-            // console.log('connected');
-            ws.send(typeStr);
-        };
-        ws.onmessage = (event) => {
-            // console.log(event);
-            // console.log(JSON.parse(event.data));
-            this.props.loadCommodityList(JSON.parse(JSON.parse(event.data).data));
-        };
+        // const typeStr = JSON.stringify({    // 指示灯，判断发送指令是什么
+        //     type: "caidan"
+        // });
+        // let ws = new WebSocket("ws://hxsmallgame.cn:3006");
+        // ws.onopen = () => {
+        //     // console.log('connected');
+        //     ws.send(typeStr);
+        // };
+        // ws.onmessage = (event) => {
+        //     // console.log(event);
+        //     // console.log(JSON.parse(event.data));
+        //     this.props.loadCommodityList(JSON.parse(JSON.parse(event.data).data));
+        // };
+        this.props.loadCommodityList();
     }
 }
 
@@ -160,10 +161,15 @@ const mapStateToProps = (state) => ({
     isShowMask: state.getIn(['managementCommodity', 'isShowMask'])
 });
 const mapDispatchToProps = (dispatch) => ({
+    // // 从服务器加载商品列表
+    // loadCommodityList(commodityList) {
+    //     console.log(commodityList);
+    //     dispatch(actionCreators.loadCommodity(commodityList));
+    // },
+
     // 从服务器加载商品列表
-    loadCommodityList(commodityList) {
-        console.log(commodityList);
-        dispatch(actionCreators.loadCommodity(commodityList));
+    loadCommodityList() {
+        dispatch(actionCreators.loadCommodityList());
     },
 
     // 点击Switch开关时，切换enable，并向服务器发送enable更改信息。注意：这里的item是immutable对象

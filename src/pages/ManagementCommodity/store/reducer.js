@@ -77,7 +77,7 @@ export default (state = defaultState, action) => {
 
     switch (action.type) {
         // 从服务器加载商品列表
-        case constants.LOAD_COMMODITY_LIST:
+        case constants.LOAD_COMMODITY_LIST_TO_LOCAL:
             return state.set('commodityList', action.commodityList);
 
         // 点击Switch开关时，切换enable

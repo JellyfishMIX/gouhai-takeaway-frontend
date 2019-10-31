@@ -1,4 +1,4 @@
-const LOAD_COMMODITY_LIST = 'managementCommodity/LOAD_COMMODITY_LIST';  // 从服务器加载商品列表
+const LOAD_COMMODITY_LIST_TO_LOCAL = 'managementCommodity/LOAD_COMMODITY_LIST_TO_LOCAL';  // 把从服务器接收到的商品列表加载到本地
 const CHANGE_COMMODITY_ENABLE = 'managementCommodity/CHANGE_COMMODITY_ENABLE';  // 点击Switch开关时，切换enable
 const UNDER_REVISION = 'managementCommodity/UNDER_REVISION';    // 点击CommodityInfo时，进入编辑模式
 const COMMODITY_TITLE_INPUT_CHANGE = 'managementCommodity/COMMODITY_TITLE_INPUT_CHANGE';    // 编辑模式下，CommodityTitleInput的value改变时
@@ -11,7 +11,7 @@ const ON_MASK = 'managementCommodity/ON_MASK';  // 点击Mask遮罩触发，隐�
 const DELETE_LOCAL_COMMODITY = 'managementCommodity/DELETE_LOCAL_COMMODITY';  // 点击"删除商品"触发，本地删当前商品，关闭Mask遮罩，并向服务器发送删除指令
 
 export {
-    LOAD_COMMODITY_LIST,
+    LOAD_COMMODITY_LIST_TO_LOCAL,
     CHANGE_COMMODITY_ENABLE,
     UNDER_REVISION,
     COMMODITY_TITLE_INPUT_CHANGE,
