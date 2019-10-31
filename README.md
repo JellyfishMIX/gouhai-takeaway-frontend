@@ -21,3 +21,11 @@ react-router-dom@5.1.2
 immutable@4.0.0-rc.12
 
 redux-immutable@4.0.0
+
+### Backend
+
+SSM(Spring+SpringMVC+MyBatis)
+
+### Database
+
+MySQL@8.0.17
