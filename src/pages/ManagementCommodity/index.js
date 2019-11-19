@@ -136,19 +136,6 @@ class ManagementCommodity extends Component {
     }
 
     componentDidMount() {
-        // const typeStr = JSON.stringify({    // 指示灯，判断发送指令是什么
-        //     type: "caidan"
-        // });
-        // let ws = new WebSocket("ws://hxsmallgame.cn:3006");
-        // ws.onopen = () => {
-        //     // console.log('connected');
-        //     ws.send(typeStr);
-        // };
-        // ws.onmessage = (event) => {
-        //     // console.log(event);
-        //     // console.log(JSON.parse(event.data));
-        //     this.props.loadCommodityList(JSON.parse(JSON.parse(event.data).data));
-        // };
         this.props.loadCommodityList();
     }
 }
@@ -161,12 +148,6 @@ const mapStateToProps = (state) => ({
     isShowMask: state.getIn(['managementCommodity', 'isShowMask'])
 });
 const mapDispatchToProps = (dispatch) => ({
-    // // 从服务器加载商品列表
-    // loadCommodityList(commodityList) {
-    //     console.log(commodityList);
-    //     dispatch(actionCreators.loadCommodity(commodityList));
-    // },
-
     // 从服务器加载商品列表
     loadCommodityList() {
         dispatch(actionCreators.loadCommodityList());
@@ -194,14 +175,24 @@ const mapDispatchToProps = (dispatch) => ({
 
     // 编辑模式下，OriginalPriceInput改变时
     handleOriginalPriceInputChange(e) {
-        const value = e.target.value;
-        dispatch(actionCreators.originalPriceInputChange(value));
+        if (e.target.value !== '') {
+            const value = parseInt(e.target.value);
+            dispatch(actionCreators.originalPriceInputChange(value));
+        } else {
+            const value = e.target.value;
+            dispatch(actionCreators.originalPriceInputChange(value));
+        }
     },
 
     // 编辑模式下，CurrentPriceInput改变时
     handleCurrentPriceInputChange(e) {
-        const value = e.target.value;
-        dispatch(actionCreators.currentPriceInputChange(value));
+        if (e.target.value !== '') {
+            const value = parseInt(e.target.value);
+            dispatch(actionCreators.currentPriceInputChange(value));
+        } else {
+            const value = e.target.value;
+            dispatch(actionCreators.currentPriceInputChange(value));
+        }
     },
 
     // 点击"保存"触发，保存编辑数据至本地store，同时post给服务器，并退出编辑模式

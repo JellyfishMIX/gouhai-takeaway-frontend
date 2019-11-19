@@ -5,8 +5,7 @@ import {fromJS} from 'immutable';
 // 从服务器加载商品列表
 const loadCommodityList = () => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/getcommoditylist').then((res) => {
-            // console.log(res);
+        axios.get('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/getcommoditylist').then((res) => {
             dispatch(_loadCommodityListToLocal(res.data.commodityList));
         }).catch((err) => {
             console.log('errMsg: ' + err);
@@ -32,7 +31,7 @@ const switchTriggerPost = (item) => {
     return (dispatch) => {
         let temObject = item.toJS();
         temObject.enable = !item.get('enable');
-        axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/updatecommodity', temObject).then(() => {
+        axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/updatecommodity', temObject).then(() => {
             console.log("axios.post success");
         }).catch((err) => {
             console.log("errMsg: " + err.toString());
@@ -68,7 +67,7 @@ const currentPriceInputChange = (value) => ({
 // 点击"保存"触发，保存编辑数据至本地store，同时post给服务器，并退出编辑模式
 const onSave = (id, temCommodity) => {
     return (dispatch) => {
-        axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/updatecommodity', temCommodity.toJS()).then(() => {
+        axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/updatecommodity', temCommodity.toJS()).then(() => {
             console.log("axios.post success");
         }).catch((err) => {
             console.log("errMsg: " + err.toString());
@@ -100,7 +99,7 @@ const onDeleteCommodity = (id) => {
     return (dispatch) => {
         const isConfirm = window.confirm('确认删除？');
         if (isConfirm) {
-            axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/deletecommodity', {
+            axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/deletecommodity', {
                 id: id
             }).then(() => {
                 console.log("axios.post success");

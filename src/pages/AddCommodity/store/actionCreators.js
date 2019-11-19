@@ -36,7 +36,7 @@ const commodityEnableSwitch = (newIsTurnOn) => ({
 const onPost = (immutableCommodity) => {
     return (dispatch) => {
         console.log(immutableCommodity.toJS());
-        axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/addcommodity', immutableCommodity.toJS()).then(() => {
+        axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/addcommodity', immutableCommodity.toJS()).then(() => {
             console.log("axios.post success");
         }).catch((err) => {
             console.log("errMsg: " + err.toString());
