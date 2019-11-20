@@ -7,15 +7,15 @@ import {
 } from './style';
 
 const Order = () => { //  可改为无状态组件
-    return (
-        <OrderWrapper>
-            <Choose/>
+        return (
+            <OrderWrapper>
+                <Choose />
 
-            <ShoppingTab/>
+                <ShoppingTab />
 
-            <OrderIconfont/>
-        </OrderWrapper>
-    );
+                <OrderIconfont />
+            </OrderWrapper>
+        );
 };
 
 export default Order;

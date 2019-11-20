@@ -1,6 +1,4 @@
 import {actionTypes} from './index';
-import dayjs from 'dayjs';
-import axios from 'axios';
 
 export const changeSum = (operate, id) => { //传送至shoppingTab的reducer
     if (operate === actionTypes.ADD_SUM) {
@@ -65,49 +63,8 @@ export const changeShowTransition = () => {
     };
 };
 
-// 课设 ! 用 axios 发送订单信息至 服务器
-export const checkout = (List) => {
-    const list = List.toJS();
-    console.log(list);
 
-    const time = dayjs(new Date());
-    const createTime = `${time.$y}-${time.$M + 1}-${time.$D} ${time.$H}:${time.$m}:${time.$s}`;
-
-    let submitList = {
-        customerName: list.personName, // 顾客姓名
-        customerPhone: list.cellphoneNumber,    // 顾客手机号，请注意，该属性的值的数据类型为字符串
-        customerAddr: list.school, // 顾客地址
-        totalPrice: list.totalPrice,  // 总价
-        createTime: new Date(), // 下单时间
-        // 订单已购商品列表
-        orderCommodityList: []
-    };
-
-    for (let i = 0; i < list.ChoosedList.length; i++) {
-        submitList.orderCommodityList.push({
-            commodityName: list.ChoosedList[i].name,  // 商品名字
-            originalPrice: list.ChoosedList[i].originalPrice, // 原价
-            unitPrice: list.ChoosedList[i].currentPrice, // 单价，即现价
-            quantity: list.ChoosedList[i].sum,  // 数量
-            totalPrice: list.ChoosedList[i].currentPrice * list.ChoosedList[i].sum,    // 单项合计
-        })
-    }
-
-    console.log(submitList); // 该句留下，测试用
-
-
-
-   axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/order/addorder', submitList)
-        .then(res => {
-            console.log(res);
-        }).catch(err => {
-        console.log(err);
-    })
-
-};
-
-
-/*//websocket试验！ 试验成功！
+//websocket试验！ 试验成功！
 export const checkout = (list) => {
     const readyList = list.toJS();
     const time = new Date();
@@ -230,8 +187,8 @@ export const checkout = (list) => {
 };
 
 const _locationToDianCanIndex = () => {
-    window.location.href = '../diancan.html';
-};*/
+    // window.location.href = '../diancan.html';
+};
 
 /*//localStorage试验！
 export const checkoutLocalStorage = () => {

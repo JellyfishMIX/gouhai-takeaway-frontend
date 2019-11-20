@@ -1,27 +1,15 @@
 import {actionTypes} from './index';
 import {fromJS} from 'immutable';
-import axios from "axios";
 
-const _getOrderList = (commodityList) => {
-    return {
-        type: actionTypes.GET_ORDERLIST,
-        foodList: commodityList
-    }
+
+export const getOrderList = (receiveList) => {
+    console.log(receiveList);
+    return (dispatch) =>
+        dispatch({
+            type: actionTypes.GET_ORDERLIST,
+            foodList: receiveList
+        })
 };
-
-export const getOrderList = () => {
-    return (dispatch) => {
-    axios.get('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/getcommoditylist')
-        .then((res) => {
-            console.log(res.data);
-            const receiveList = res.data.commodityList;
-            dispatch(_getOrderList(receiveList))
-        }).catch((err) => {
-            console.log('菜单数据请求失败',err);
-        });
-    }
-};
-
 
 
 const _addShoppingCart = (item, currentPrice) => ({
