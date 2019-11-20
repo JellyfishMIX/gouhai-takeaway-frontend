@@ -93,10 +93,6 @@ const _add_food = (state, action) => { //逻辑通！ 算法待优化！！
             showTransition: !state.get('showTransition'),
         });
     } else {
-        if(newTotalChoosedKinds > 0){
-            alert("对不起，目前只支持添加一道菜");
-            return state;
-        }
         newTotalChoosedKinds += 1;
         const newChoosedList = state.get('ChoosedList').push(action.item);
         return state.merge({
