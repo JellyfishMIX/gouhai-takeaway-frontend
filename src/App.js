@@ -9,6 +9,7 @@ import Management from "./pages/Management";
 import ManagementCommodity from './pages/ManagementCommodity';
 import AddCommodity from './pages/AddCommodity';
 import Checkout from "./pages/Checkout/index";
+import SeeOrder from "./pages/SeeOrder";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                     <Route path='/management' exact component={Management} />
                     <Route path='/management/commodity' exact component={ManagementCommodity} />
                     <Route path='/management/addcommodity' exact component={AddCommodity} />
+                    <Route path='/management/seeorder' exact component={SeeOrder} />
                 </HashRouter>
             </Provider>
         </div>
