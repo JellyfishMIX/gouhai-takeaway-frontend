@@ -41,7 +41,7 @@ class Choose extends PureComponent {
                                                             {item.get('name')}&nbsp;
                                                             <i className="iconfont ic">&#xe61f;</i>
                                                         </div>
-                                                        <div className='food-desc'>{item.get('miaoshu')}</div>
+                                                        <div className='food-desc'>{item.get('describe')}</div>
                                                         <div className='food-price'>
                                                         <span
                                                             className='originalPrice'>原价:￥{item.get('originalPrice')}</span>
@@ -68,6 +68,11 @@ class Choose extends PureComponent {
     }
 
     componentDidMount() {
+
+        this.props.getOrderList();
+    }
+
+    /*componentDidMount() {
         let ws = new WebSocket("ws://hxsmallgame.cn:3006");
         let receiveList;
         const js = {
@@ -89,7 +94,7 @@ class Choose extends PureComponent {
             console.log("Connection closed");
             this.props.getOrderList(receiveList);
         };
-    }
+    }*/
 
 }
 
@@ -101,8 +106,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getOrderList(receiveList) {
-        dispatch(actionCreators.getOrderList(receiveList));
+    getOrderList() {
+        dispatch(actionCreators.getOrderList());
     },
     handleAddFood(foodList, id) {
         dispatch(actionCreators.addShoppingCart(foodList, id));
