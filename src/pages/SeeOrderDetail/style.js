@@ -24,7 +24,7 @@ const ComponentTitle = styled.div `
     }
 `;
 
-const Order = styled.div `
+const OrderCommodityList = styled.div `
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,44 +37,26 @@ const Order = styled.div `
     box-sizing: border-box;
 `;
 
-const OrderInfo = styled.div `
+const OrderCommodityListCrown = styled.div `
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
-    height: 30px;
-    font-size: 20px;
-    color: #222;
-    &.datetime {
-        white-space: pre;
-    }
+    background: red;
 `;
 
-const ButtonArea = styled.div `
+const OrderCommodity = styled.div `
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
-    height: 30px;
-`;
-
-const SeeMore = styled.div `
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 34px;
-    color: #fff;
-    background: #f4c25b;
-    border-radius: 8px;
+    background: red;
 `;
 
 export {
     Container,
     ComponentTitle,
-    Order,
-    OrderInfo,
-    ButtonArea,
-    SeeMore
+    OrderCommodityList,
+    OrderCommodity
 }

@@ -1,13 +1,14 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
 import {actionCreators} from './store';
+import {Link} from "react-router-dom";
 import {
     Container,
     ComponentTitle,
     Order,
     OrderInfo,
     ButtonArea,
-    DeleteButton
+    SeeMore
 } from './style';
 
 class SeeOrder extends Component {
@@ -22,13 +23,15 @@ class SeeOrder extends Component {
                     this.props.orderList.map((item) => {
                         return (
                             <Order key={item.get('orderId')}>
-                                <OrderInfo>姓名: {item.get('customerName')}</OrderInfo>
-                                <OrderInfo>电话: {item.get('customerPhone')}</OrderInfo>
-                                <OrderInfo>日期: {item.get('createTime')}</OrderInfo>
+                                <OrderInfo>姓名：{item.get('customerName')}</OrderInfo>
+                                <OrderInfo>电话：{item.get('customerPhone')}</OrderInfo>
+                                <OrderInfo className="datetime">日期：{item.get('createTime')}</OrderInfo>
                                 <OrderInfo>地址：{item.get('customerAddr')}</OrderInfo>
                                 <OrderInfo>总价：¥{item.get('totalPrice')}</OrderInfo>
                                 <ButtonArea>
-                                    <DeleteButton>删除记录</DeleteButton>
+                                    <Link to={'/management/seeorderdetail'}>
+                                        <SeeMore onClick={() => {this.pushOrderToSeeOrderDetail(item)}}>查看详情</SeeMore>
+                                    </Link>
                                 </ButtonArea>
                             </Order>
                         )
@@ -38,7 +41,15 @@ class SeeOrder extends Component {
         )
     }
     componentDidMount() {
+        // 从服务器加载订单列表
         this.props.loadOrderList();
+    }
+
+    pushOrderToSeeOrderDetail(item) {
+        this.props.history.push({
+            pathname: '/management/seeorderdetail',
+            state: item
+        })
     }
 }
 

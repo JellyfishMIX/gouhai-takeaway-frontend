@@ -6,6 +6,8 @@ import {reducer as managementCommodityReducer} from '../pages/ManagementCommodit
 import {reducer as checkoutReducer} from '../pages/Checkout/store/index';
 import {reducer as addCommodityReducer} from '../pages/AddCommodity/store';
 import {reducer as seeOrderReducer} from '../pages/SeeOrder/store';
+import {reducer as seeOrderDetailReducer} from '../pages/SeeOrderDetail/store';
+
 const reducer = combineReducers({
     header: headerReducer,
     order: orderReducer,
@@ -13,7 +15,8 @@ const reducer = combineReducers({
     managementCommodity: managementCommodityReducer,
     checkout: checkoutReducer,
     addCommodity: addCommodityReducer,
-    seeOrder: seeOrderReducer
+    seeOrder: seeOrderReducer,
+    seeOrderDetail: seeOrderDetailReducer
 });
 
 export default reducer;
