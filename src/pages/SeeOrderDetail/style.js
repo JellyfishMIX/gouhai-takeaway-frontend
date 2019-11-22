@@ -35,28 +35,97 @@ const OrderCommodityList = styled.div `
     border-radius: 15px;
     padding: 15px;
     box-sizing: border-box;
+    color: #222;
 `;
 
 const OrderCommodityListCrown = styled.div `
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
-    background: red;
+    padding: 0 5px;
+    .commodity-name {
+        width: 140px;
+        font-size: 18px;
+    }
+    .unit-price {
+        width: 40px;
+        font-size: 18px;
+    }
+    .quantity {
+        width: 40px;
+        font-size: 18px;
+    }
+    .total-price {
+        width: 60px;
+        font-size: 18px;
+    }
 `;
 
-const OrderCommodity = styled.div `
+const OrderCommodityItem = styled.div `
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background: red;
+    border: 1px solid #777;
+    border-radius: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 0 5px;
+    .commodity-name {
+        width: 140px;
+        font-size: 18px;
+    }
+    .unit-price {
+        width: 40px;
+        font-size: 18px;
+    }
+    .quantity {
+        width: 40px;
+        font-size: 18px;
+    }
+    .total-price {
+        width: 60px;
+        font-size: 18px;
+    }
+`;
+
+const OrderOverview = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 355px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    color: #222;
+    font-size: 18px;
+`;
+
+const OrderInfo = styled.div `
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    color: #222;
+    &.datetime {
+        white-space: pre;
+    }
 `;
 
 export {
     Container,
     ComponentTitle,
     OrderCommodityList,
-    OrderCommodity
+    OrderCommodityListCrown,
+    OrderCommodityItem,
+    OrderOverview,
+    OrderInfo
 }

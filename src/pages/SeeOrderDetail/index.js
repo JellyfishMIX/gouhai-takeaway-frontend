@@ -5,8 +5,12 @@ import {
     Container,
     ComponentTitle,
     OrderCommodityList,
-    OrderCommodity
+    OrderCommodityListCrown,
+    OrderCommodityItem,
+    OrderOverview,
+    OrderInfo
 } from './style';
+import {Order} from "../SeeOrder/style";
 
 class SeeOrderDetail extends Component {
     render() {
@@ -17,14 +21,32 @@ class SeeOrderDetail extends Component {
                     <div className="line"/>
                 </ComponentTitle>
                 <OrderCommodityList>
+                    <OrderCommodityListCrown>
+                        <div className="commodity-name">商品名称</div>
+                        <div className="unit-price">单价</div>
+                        <div className="quantity">数量</div>
+                        <div className="total-price">金额</div>
+                    </OrderCommodityListCrown>
                     {
                         this.props.order.get('orderCommodityList') ? this.props.order.get('orderCommodityList').map((item) => {
                             return (
-                                <div>hello, world!</div>
+                                <OrderCommodityItem key={item.get('orderCommodityId')}>
+                                    <div className="commodity-name">{item.get('commodityName')}</div>
+                                    <div className="unit-price">{item.get('unitPrice')}</div>
+                                    <div className="quantity">{item.get('quantity')}</div>
+                                    <div className="total-price">{item.get('totalPrice')}</div>
+                                </OrderCommodityItem>
                             )
                         }) : ''
                     }
                 </OrderCommodityList>
+                <OrderOverview>
+                    <OrderInfo>姓名：{this.props.order.get('customerName')}</OrderInfo>
+                    <OrderInfo>电话：{this.props.order.get('customerPhone')}</OrderInfo>
+                    <OrderInfo className="datetime">日期：{this.props.order.get('createTime')}</OrderInfo>
+                    <OrderInfo>地址：{this.props.order.get('customerAddr')}</OrderInfo>
+                    <OrderInfo>总价：¥{this.props.order.get('totalPrice')}</OrderInfo>
+                </OrderOverview>
             </Container>
         )
     }
