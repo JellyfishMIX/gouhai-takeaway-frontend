@@ -10,7 +10,6 @@ import {
     OrderOverview,
     OrderInfo
 } from './style';
-import {Order} from "../SeeOrder/style";
 
 class SeeOrderDetail extends Component {
     render() {
