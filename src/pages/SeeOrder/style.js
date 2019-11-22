@@ -24,6 +24,32 @@ const ComponentTitle = styled.div `
     }
 `;
 
+const Navigation = styled.div `
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+    margin-bottom: 8px;
+    color: #222;
+    .column {
+        width: 1px;
+        height: 20px;
+        background: #777;
+    }
+`;
+
+const NavigationIsArrived = styled.div `
+    width: 60px;
+    font-size: 20px;
+    .active {
+        color: #f4c25b;
+    }
+`;
+
 const Order = styled.div `
     display: flex;
     flex-direction: column;
@@ -73,6 +99,8 @@ const SeeMore = styled.div `
 export {
     Container,
     ComponentTitle,
+    Navigation,
+    NavigationIsArrived,
     Order,
     OrderInfo,
     ButtonArea,

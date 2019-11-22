@@ -45,6 +45,7 @@ class SeeOrderDetail extends Component {
                     <OrderInfo className="datetime">日期：{this.props.order.get('createTime')}</OrderInfo>
                     <OrderInfo>地址：{this.props.order.get('customerAddr')}</OrderInfo>
                     <OrderInfo>总价：¥{this.props.order.get('totalPrice')}</OrderInfo>
+                    <OrderInfo>送达：{this.props.order.get('isArrived') ? <div className="isArrivedTrue">是</div> : <div className="isArrivedFalse">否</div>}</OrderInfo>
                 </OrderOverview>
             </Container>
         )

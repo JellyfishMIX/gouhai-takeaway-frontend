@@ -15,6 +15,16 @@ const loadOrderList = () => {
     }
 };
 
+// 选中"待派送"
+const selectedArrivedFalse = () => ({
+    type: constants.SELECTED_ARRIVED_FALSE
+});
+
+// 选中"已送达"
+const selectedArrivedTrue = () => ({
+    type: constants.SELECTED_ARRIVED_TRUE
+});
+
 // 把从服务器接收到的订单列表加载到本地
 const _loadOrderListToLocal = (orderList) => ({
     type: constants.LOAD_ORDER_LIST_TO_LOCAL,
@@ -22,5 +32,7 @@ const _loadOrderListToLocal = (orderList) => ({
 });
 
 export {
-    loadOrderList
+    loadOrderList,
+    selectedArrivedFalse,
+    selectedArrivedTrue
 };

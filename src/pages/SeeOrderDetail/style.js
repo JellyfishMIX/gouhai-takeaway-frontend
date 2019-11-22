@@ -118,6 +118,12 @@ const OrderInfo = styled.div `
     &.datetime {
         white-space: pre;
     }
+    .isArrivedTrue {
+        color: #1AAD19;
+    }
+    .isArrivedFalse {
+        color: red;
+    }
 `;
 
 export {

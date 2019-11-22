@@ -19,7 +19,7 @@ const Commodity = styled.div `
     align-items: center;
     width: 355px;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     background: #fff;
     border-radius: 15px;
     padding: 15px;
