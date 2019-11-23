@@ -81,6 +81,10 @@ class AddCommodity extends Component {
                             </Link>
                         </CancelArea>
                     </CommodityPoster>
+                    <div>
+                        这里上传图片
+                    </div>
+
                 </Container>
             )
         }
