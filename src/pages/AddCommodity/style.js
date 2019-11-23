@@ -191,6 +191,7 @@ const CancelButton = styled.div `
     height: 34px;
     background: #fff;
     border-radius: 8px;
+    color: #777;
     border: 1px solid #777;
 `;
 

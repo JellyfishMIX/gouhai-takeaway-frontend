@@ -55,7 +55,7 @@ class ManagementCommodity extends Component {
                                                     <CommodityController>
                                                         <Switch
                                                             isTurnOn={item.get('enable')}
-                                                            color='1AAD19'
+                                                            color='#1AAD19'
                                                             onClick={() => {
                                                                 this.props.handleSwitch(item.get('id'), item.get('enable'), item);
                                                             }}

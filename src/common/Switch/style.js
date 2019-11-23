@@ -13,14 +13,14 @@ const Track = styled.div.attrs(props => ({
     border-radius: 34px;
     background: rgb(204, 204, 204);
     &.turn-on {
-        background: #1AAD19;
+        //background: #1AAD19;
         background: ${props => {return props.background}};
     }
     &.discolor-enter {
         transition: all .2s ease-out;
     }
     &.discolor-enter-active {
-        background: #1AAD19;
+        //background: #1AAD19;
         background: ${props => {return props.background}};
     }
     &.discolor-exit {

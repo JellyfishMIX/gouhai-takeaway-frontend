@@ -64,7 +64,7 @@ class AddCommodity extends Component {
                         <div className="tips">是否可见：</div>
                         <Switch
                             isTurnOn={this.props.commodity.get('enable')}
-                            color='1AAD19'
+                            color='#1AAD19'
                             onClick={() => {this.props.handleSwitch(this.props.commodity.get('enable'));}}
                         />
                     </CommodityEnable>
