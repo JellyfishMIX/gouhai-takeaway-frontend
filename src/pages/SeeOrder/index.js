@@ -18,7 +18,7 @@ class SeeOrder extends Component {
         return (
             <Container>
                 <ComponentTitle>
-                    订单
+                    订单列表
                     <div className="line"/>
                 </ComponentTitle>
                 <Navigation>
