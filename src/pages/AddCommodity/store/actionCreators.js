@@ -33,10 +33,14 @@ const commodityEnableSwitch = (newIsTurnOn) => ({
 });
 
 // 点击"添加"时触发，添加数据至服务器
-const onPost = (immutableCommodity) => {
+const onPost = (param) => {
     return (dispatch) => {
-        console.log(immutableCommodity.toJS());
-        axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/addcommodity', immutableCommodity.toJS()).then(() => {
+        // console.log(immutableCommodity.toJS());
+        const config = {
+            headers: {"Content-Type":"multipart/form-data"}
+        };
+
+        axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/addcommodity', param,config).then(() => {
             console.log("axios.post success");
         }).catch((err) => {
             console.log("errMsg: " + err.toString());

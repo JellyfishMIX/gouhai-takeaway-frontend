@@ -195,6 +195,12 @@ const CancelButton = styled.div `
     border: 1px solid #777;
 `;
 
+const UploadImagesWrapper = styled.div`
+    width: 90%;
+    background: white;
+
+`;
+
 export {
     Container,
     ComponentTitle,
@@ -206,5 +212,6 @@ export {
     PostArea,
     PostButton,
     CancelArea,
-    CancelButton
+    CancelButton,
+    UploadImagesWrapper
 };
