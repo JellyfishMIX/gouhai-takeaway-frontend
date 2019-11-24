@@ -96,6 +96,32 @@ const SeeMore = styled.div `
     border-radius: 8px;
 `;
 
+const ArrivedButton = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 34px;
+    color: #777;
+    border: 1px solid #777;
+    border-radius: 8px;
+    margin-left: 5px;
+`;
+
+const DeleteOrder = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 34px;
+    color: rgb(234,111,90);
+    border: 1px solid #777;
+    border-radius: 8px;
+    margin-left: 5px;
+`;
+
 export {
     Container,
     ComponentTitle,
@@ -104,5 +130,7 @@ export {
     Order,
     OrderInfo,
     ButtonArea,
-    SeeMore
+    SeeMore,
+    ArrivedButton,
+    DeleteOrder
 }

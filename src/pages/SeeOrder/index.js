@@ -10,7 +10,9 @@ import {
     Order,
     OrderInfo,
     ButtonArea,
-    SeeMore
+    SeeMore,
+    ArrivedButton,
+    DeleteOrder
 } from './style';
 
 class SeeOrder extends Component {
@@ -37,6 +39,7 @@ class SeeOrder extends Component {
                                     <OrderInfo>地址：{item.get('customerAddr')}</OrderInfo>
                                     <OrderInfo>总价：¥{item.get('totalPrice')}</OrderInfo>
                                     <ButtonArea>
+                                        <ArrivedButton onClick={() => {this.props.handleArrivedButton(item.get('orderId'))}}>确认送达</ArrivedButton>
                                         <Link to={'/management/seeorderdetail'}>
                                             <SeeMore onClick={() => {this.pushOrderToSeeOrderDetail(item)}}>查看详情</SeeMore>
                                         </Link>
@@ -59,6 +62,7 @@ class SeeOrder extends Component {
                                     <OrderInfo>地址：{item.get('customerAddr')}</OrderInfo>
                                     <OrderInfo>总价：¥{item.get('totalPrice')}</OrderInfo>
                                     <ButtonArea>
+                                        <DeleteOrder onClick={() => {this.props.handleDeleteOrder(item.get('orderId'))}}>删除订单</DeleteOrder>
                                         <Link to={'/management/seeorderdetail'}>
                                             <SeeMore onClick={() => {this.pushOrderToSeeOrderDetail(item)}}>查看详情</SeeMore>
                                         </Link>
@@ -73,6 +77,7 @@ class SeeOrder extends Component {
             </Container>
         )
     }
+
     componentDidMount() {
         // 从服务器加载订单列表
         this.props.loadOrderList();
@@ -99,14 +104,24 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(actionCreators.loadOrderList());
     },
 
-    // 选中"待派送"
+    // 选中"待派送"navigation
     selectedArrivedFalse() {
         dispatch(actionCreators.selectedArrivedFalse());
     },
 
-    // 选中"已送达"
+    // 选中"已送达"navigation
     selectedArrivedTrue() {
         dispatch(actionCreators.selectedArrivedTrue());
+    },
+
+    // 点击"确认送达"按钮时触发
+    handleArrivedButton(orderId) {
+        dispatch(actionCreators.onArrived(orderId));
+    },
+
+    // 点击"删除订单"按钮时触发
+    handleDeleteOrder(orderId) {
+        dispatch(actionCreators.deleteOrder(orderId));
     }
 });
 
