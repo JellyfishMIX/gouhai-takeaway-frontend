@@ -14,14 +14,15 @@ import {
     PostArea,
     PostButton,
     CancelArea,
-    CancelButton
+    CancelButton,
+    UploadImagesWrapper
 } from './style';
 import Switch from "../../common/Switch";
 
 class AddCommodity extends Component {
     render() {
         if (!this.props.isLogin) {
-            return <Redirect to="/management/login" />
+            return <Redirect to="/management/login"/>
         } else {
             return (
                 <Container>
@@ -35,6 +36,7 @@ class AddCommodity extends Component {
                             placeholder="名称"
                             value={this.props.commodity.get('name')}
                             onChange={this.props.handleCommodityTitleInputChange}
+                            ref={(name) => this.inputNameRef = name}
                         />
                     </CommodityTitle>
                     <CommodityPrice>
@@ -43,6 +45,7 @@ class AddCommodity extends Component {
                             placeholder="原价"
                             value={this.props.commodity.get('originalPrice')}
                             onChange={this.props.handleOriginalPriceInputChange}
+                            ref={(originalPrice) => this.inputOriginalPrice = originalPrice}
                         />
                         <div className="separator"/>
                         <input
@@ -50,6 +53,7 @@ class AddCommodity extends Component {
                             placeholder="现价"
                             value={this.props.commodity.get('currentPrice')}
                             onChange={this.props.handleCurrentPriceInputChange}
+                            ref={(currentPrice) => this.inputCurrentPrice = currentPrice}
                         />
                     </CommodityPrice>
                     <CommodityImgURL>
@@ -58,6 +62,7 @@ class AddCommodity extends Component {
                             placeholder="图片URL"
                             value={this.props.commodity.get('imgURL')}
                             onChange={this.props.handleCommodityImgURLInputChange}
+                            ref={(imgurl) => this.inputImgUrlRef = imgurl}
                         />
                     </CommodityImgURL>
                     <CommodityEnable>
@@ -65,13 +70,25 @@ class AddCommodity extends Component {
                         <Switch
                             isTurnOn={this.props.commodity.get('enable')}
                             color='#1AAD19'
-                            onClick={() => {this.props.handleSwitch(this.props.commodity.get('enable'));}}
+                            onClick={() => {
+                                this.props.handleSwitch(this.props.commodity.get('enable'));
+                            }}
                         />
                     </CommodityEnable>
                     <CommodityPoster>
                         <PostArea>
                             <div className="tips">添加</div>
-                            <PostButton onClick={() => {this.props.handlePostButton(this.props.commodity)}}>OK</PostButton>
+                            <PostButton onClick={() => {
+                                this.props.handlePostButton(
+                                    this.props.commodity,
+                                    // 以下为DOM-ref传参
+                                    this.inputNameRef, //菜品名称
+                                    this.inputOriginalPrice, //原价
+                                    this.inputCurrentPrice, // 现价
+                                    this.inputImgUrlRef, // 图片URL
+                                    this.inputImageRef // 上传图片文件
+                                )
+                            }}>OK</PostButton>
                         </PostArea>
                         <div className="separator"/>
                         <CancelArea>
@@ -81,6 +98,12 @@ class AddCommodity extends Component {
                             </Link>
                         </CancelArea>
                     </CommodityPoster>
+                    <UploadImagesWrapper>
+                        <input ref={(file) => this.inputImageRef = file}
+                               type='file'
+                               id='input-img'/>
+                    </UploadImagesWrapper>
+
                 </Container>
             )
         }
@@ -134,7 +157,48 @@ const mapDispatchToProps = (dispatch) => ({
     },
 
     // 点击"添加"时触发，添加数据
-    handlePostButton(immutableCommodity) {
+    handlePostButton(immutableCommodity,
+                     // 以下为DOM接收参数
+                     inputNameRef,
+                     inputOriginalPrice,
+                     inputCurrentPrice,
+                     inputImgUrlRef,
+                     inputImageRef,) {
+
+        const commodityList = immutableCommodity.toJS();
+        // TODO : 是否要求每次提交必须有图片 ？
+        // 点击确定 获取输入数据 同时 获取input file DOM
+        // 创建 Form 对象，用于axios直接 POST
+        let inputNameRef_file = inputNameRef.value;
+        let inputOriginalPrice_file = inputOriginalPrice.value;
+        let inputCurrentPrice_file = inputCurrentPrice.value;
+        let inputImgUrlRef_file = inputImgUrlRef.value;
+        let inputImageRef_file = inputImageRef.files[0];
+
+        let param = new FormData();
+        param.append('name', inputNameRef_file);
+        param.append('originalPrice', inputOriginalPrice_file);
+        param.append('CurrentPrice', inputCurrentPrice_file);
+        param.append('enable', commodityList.enable);
+        param.append('describe', commodityList.describe);
+        param.append('sum', commodityList.sum);
+        param.append('isUnderRevision', commodityList.isUnderRevision);
+        param.append('isSeeMore', commodityList.isSeeMore);
+        param.append('imgURL', inputImgUrlRef_file);
+        param.append('imageFile', inputImageRef_file);  // file.name 即 imageName.jpeg
+
+        console.log('FormData 内容 : ');
+        console.log('name 内容是 ：',param.get('name'));
+        console.log('originalPrice 内容是 ：',param.get('originalPrice'));
+        console.log('CurrentPrice 内容是 ：',param.get('CurrentPrice'));
+        console.log('enable 内容是 ：',param.get('enable'));
+        console.log('describe 内容是 ：',param.get('describe'));
+        console.log('sum 内容是 ：',param.get('sum'));
+        console.log('isUnderRevision 内容是 ：',param.get('isUnderRevision'));
+        console.log('isSeeMore 内容是 ：',param.get('isSeeMore'));
+        console.log('imgURL 内容是 ：',param.get('imgURL'));
+        console.log('imageFile 内容是 ：',param.get('imageFile'));
+
         // if阵列判断异常并提示
         if (immutableCommodity.get('name') === '') {
             alert('商品名称不能为空');
@@ -148,13 +212,16 @@ const mapDispatchToProps = (dispatch) => ({
             alert('商品现价不能为空');
             return;
         }
-        dispatch(actionCreators.onPost(immutableCommodity));
+
+        dispatch(actionCreators.onPost(param));
     },
 
     // 点击"取消"时触发，清空temCommodity
     handleCancelButton() {
         dispatch(actionCreators.onCancel());
     },
+
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCommodity);
