@@ -185,7 +185,7 @@ const mapDispatchToProps = (dispatch) => ({
         param.append('isUnderRevision', commodityList.isUnderRevision);
         param.append('isSeeMore', commodityList.isSeeMore);
         param.append('imgURL', inputImgUrlRef_file);
-        param.append('imageFile', inputImageRef_file);  // file.name 即 imageName.jpeg
+        param.append('imageFile', inputImageRef_file);
 
         console.log('FormData 内容 : ');
         console.log('name 内容是 ：',param.get('name'));
