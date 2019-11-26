@@ -80,7 +80,7 @@ const CommodityPrice = styled.div`
     }
 `;
 
-const CommodityImgURL = styled.div `
+const CommodityDescribe = styled.div `
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -206,7 +206,7 @@ export {
     ComponentTitle,
     CommodityTitle,
     CommodityPrice,
-    CommodityImgURL,
+    CommodityDescribe,
     CommodityEnable,
     CommodityPoster,
     PostArea,

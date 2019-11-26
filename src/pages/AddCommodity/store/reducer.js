@@ -8,11 +8,10 @@ const defaultState = fromJS({
         originalPrice: '',
         currentPrice: '',
         enable: true,
-        describe: "暂无描述",
+        describe: '',
         sum: 1,
         isUnderRevision: false,
-        isSeeMore: false,
-        imgURL: ''
+        isSeeMore: false
     },
 });
 
@@ -31,8 +30,8 @@ export default (state = defaultState, action) => {
             return state.setIn(['commodity', 'currentPrice'], action.value);
 
         // CommodityImgURLInput的value改变时
-        case constants.COMMODITY_IMG_URL_INPUT_CHANGE:
-            return state.setIn(['commodity', 'imgURL'], action.value);
+        case constants.DESCRIBE_INPUT_CHANGE:
+            return state.setIn(['commodity', 'describe'], action.value);
 
         // 点击Switch开关时，切换enable
         case constants.COMMODITY_ENABLE_SWITCH:
@@ -46,11 +45,10 @@ export default (state = defaultState, action) => {
                 originalPrice: '',
                 currentPrice: '',
                 enable: true,
-                describe: "暂无描述",
+                describe: '',
                 sum: 1,
                 isUnderRevision: false,
-                isSeeMore: false,
-                imgURL: ''
+                isSeeMore: false
             }));
 
         default:

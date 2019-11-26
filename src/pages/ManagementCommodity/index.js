@@ -112,7 +112,7 @@ class ManagementCommodity extends Component {
                                                         item.get('isSeeMore') ?
                                                             <CommodityBubble>
                                                                 <DeleteCommodity
-                                                                    onClick={() => {this.props.handleDeleteCommodity(item.get('id'))}}
+                                                                    onClick={() => {this.props.handleDeleteCommodity(item.get('id'), item.get('imgRelativePath'))}}
                                                                 >删除商品
                                                                 </DeleteCommodity>
                                                             </CommodityBubble> : null
@@ -216,8 +216,8 @@ const mapDispatchToProps = (dispatch) => ({
     },
 
     // 点击"删除商品"触发，本地删当前商品，关闭Mask遮罩，并向服务器发送删除指令
-    handleDeleteCommodity(id) {
-        dispatch(actionCreators.onDeleteCommodity(id));
+    handleDeleteCommodity(id, imgRelativePath) {
+        dispatch(actionCreators.onDeleteCommodity(id, imgRelativePath));
     }
 });
 

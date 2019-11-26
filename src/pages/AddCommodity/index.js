@@ -7,7 +7,7 @@ import {
     ComponentTitle,
     CommodityTitle,
     CommodityPrice,
-    CommodityImgURL,
+    CommodityDescribe,
     CommodityEnable,
     CommodityPoster,
     PostArea,
@@ -55,15 +55,15 @@ class AddCommodity extends Component {
                             ref={(currentPrice) => this.inputCurrentPrice = currentPrice}
                         />
                     </CommodityPrice>
-                    <CommodityImgURL>
+                    <CommodityDescribe>
                         <input
                             className="input"
-                            placeholder="图片URL"
-                            value={this.props.commodity.get('imgURL')}
-                            onChange={this.props.handleCommodityImgURLInputChange}
-                            ref={(imgurl) => this.inputImgUrlRef = imgurl}
+                            placeholder="描述"
+                            value={this.props.commodity.get('describe')}
+                            onChange={this.props.handleDescribeInputChange}
+                            ref={(describe) => this.inputDescribe = describe}
                         />
-                    </CommodityImgURL>
+                    </CommodityDescribe>
                     <CommodityEnable>
                         <div className="tips">是否可见：</div>
                         <Switch
@@ -84,7 +84,7 @@ class AddCommodity extends Component {
                                     this.inputNameRef, //菜品名称
                                     this.inputOriginalPrice, //原价
                                     this.inputCurrentPrice, // 现价
-                                    this.inputImgUrlRef, // 图片URL
+                                    this.inputDescribe, // 图片URL
                                     this.inputImageRef // 上传图片文件
                                 )
                             }}>OK</PostButton>
@@ -143,10 +143,10 @@ const mapDispatchToProps = (dispatch) => ({
         }
     },
 
-    // CommodityImgURLInput的value改变时
-    handleCommodityImgURLInputChange(e) {
+    // describeInput的value改变时
+    handleDescribeInputChange(e) {
         const value = e.target.value;
-        dispatch(actionCreators.commodityImgURLInputChange(value));
+        dispatch(actionCreators.describeInputChange(value));
     },
 
     // 点击Switch开关时，切换enable
@@ -161,42 +161,8 @@ const mapDispatchToProps = (dispatch) => ({
                      inputNameRef,
                      inputOriginalPrice,
                      inputCurrentPrice,
-                     inputImgUrlRef,
+                     inputDescribe,
                      inputImageRef,) {
-
-        const commodityList = immutableCommodity.toJS();
-        // TODO : 是否要求每次提交必须有图片 ？
-        // 点击确定 获取输入数据 同时 获取input file DOM
-        // 创建 Form 对象，用于axios直接 POST
-        let inputNameRef_file = inputNameRef.value;
-        let inputOriginalPrice_file = inputOriginalPrice.value;
-        let inputCurrentPrice_file = inputCurrentPrice.value;
-        let inputImgUrlRef_file = inputImgUrlRef.value;
-        let inputImageRef_file = inputImageRef.files[0];
-
-        let param = new FormData();
-        param.append('name', inputNameRef_file);
-        param.append('originalPrice', inputOriginalPrice_file);
-        param.append('currentPrice', inputCurrentPrice_file);
-        param.append('enable', commodityList.enable);
-        param.append('describe', commodityList.describe);
-        param.append('sum', commodityList.sum);
-        param.append('isUnderRevision', commodityList.isUnderRevision);
-        param.append('isSeeMore', commodityList.isSeeMore);
-        param.append('imgURL', inputImgUrlRef_file);
-        param.append('imageFile', inputImageRef_file);
-
-        console.log('FormData 内容 : ');
-        console.log('name 内容是 ：',param.get('name'));
-        console.log('originalPrice 内容是 ：',param.get('originalPrice'));
-        console.log('currentPrice 内容是 ：',param.get('currentPrice'));
-        console.log('enable 内容是 ：',param.get('enable'));
-        console.log('describe 内容是 ：',param.get('describe'));
-        console.log('sum 内容是 ：',param.get('sum'));
-        console.log('isUnderRevision 内容是 ：',param.get('isUnderRevision'));
-        console.log('isSeeMore 内容是 ：',param.get('isSeeMore'));
-        console.log('imgURL 内容是 ：',param.get('imgURL'));
-        console.log('imageFile 内容是 ：',param.get('imageFile'));
 
         // if阵列判断异常并提示
         if (immutableCommodity.get('name') === '') {
@@ -211,6 +177,42 @@ const mapDispatchToProps = (dispatch) => ({
             alert('商品现价不能为空');
             return;
         }
+        if (immutableCommodity.get('describe') === null) {
+            inputDescribe.value = '暂无描述';
+        }
+
+        const commodityList = immutableCommodity.toJS();
+        // TODO : 是否要求每次提交必须有图片 ？
+        // 点击确定 获取输入数据 同时 获取input file DOM
+        // 创建 Form 对象，用于axios直接 POST
+        // let inputNameRef_file = inputNameRef.value;
+        let inputOriginalPrice_file = inputOriginalPrice.value;
+        let inputCurrentPrice_file = inputCurrentPrice.value;
+        // let inputDescribe_file = inputDescribe.value;
+        let inputImageRef_file = inputImageRef.files[0];
+
+        let param = new FormData();
+        param.append('name', commodityList.name);
+        param.append('originalPrice', inputOriginalPrice_file);
+        param.append('currentPrice', inputCurrentPrice_file);
+        param.append('enable', commodityList.enable);
+        param.append('sum', commodityList.sum);
+        param.append('isUnderRevision', commodityList.isUnderRevision);
+        param.append('isSeeMore', commodityList.isSeeMore);
+        param.append('describe', commodityList.describe);
+        param.append('imageFile', inputImageRef_file);
+
+        // 打印检查FormData
+        console.log('FormData 内容 : ');
+        console.log('name 内容是 ：', param.get('name'));
+        console.log('originalPrice 内容是 ：', param.get('originalPrice'));
+        console.log('currentPrice 内容是 ：', param.get('currentPrice'));
+        console.log('enable 内容是 ：', param.get('enable'));
+        console.log('sum 内容是 ：', param.get('sum'));
+        console.log('isUnderRevision 内容是 ：', param.get('isUnderRevision'));
+        console.log('isSeeMore 内容是 ：', param.get('isSeeMore'));
+        console.log('describe 内容是 ：', param.get('describe'));
+        console.log('imageFile 内容是 ：', param.get('imageFile'));
 
         dispatch(actionCreators.onPost(param));
     },
@@ -219,8 +221,6 @@ const mapDispatchToProps = (dispatch) => ({
     handleCancelButton() {
         dispatch(actionCreators.onCancel());
     },
-
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCommodity);

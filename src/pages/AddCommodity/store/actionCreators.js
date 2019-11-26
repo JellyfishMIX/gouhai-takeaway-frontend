@@ -21,8 +21,8 @@ const currentPriceInputChange = (value) => ({
 });
 
 // CommodityImgURLInput的value改变时
-const commodityImgURLInputChange = (value) => ({
-    type: constants.COMMODITY_IMG_URL_INPUT_CHANGE,
+const describeInputChange = (value) => ({
+    type: constants.DESCRIBE_INPUT_CHANGE,
     value,
 });
 
@@ -35,12 +35,11 @@ const commodityEnableSwitch = (newIsTurnOn) => ({
 // 点击"添加"时触发，添加数据至服务器
 const onPost = (param) => {
     return (dispatch) => {
-        // console.log(immutableCommodity.toJS());
         const config = {
             headers: {"Content-Type":"multipart/form-data"}
         };
 
-        axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/addcommodity', param, config).then(() => {
+        axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/addcommodity', param, config).then(() => {
             console.log("axios.post success");
         }).catch((err) => {
             console.log("errMsg: " + err.toString());
@@ -59,7 +58,7 @@ export {
     commodityTitleInputChange,
     originalPriceInputChange,
     currentPriceInputChange,
-    commodityImgURLInputChange,
+    describeInputChange,
     commodityEnableSwitch,
     onPost,
     onCancel

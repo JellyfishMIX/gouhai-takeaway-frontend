@@ -95,12 +95,13 @@ const onSeeMore = (id) => ({
 });
 
 // 点击"删除商品"触发，本地删当前商品，关闭Mask遮罩，并向服务器发送删除指令
-const onDeleteCommodity = (id) => {
+const onDeleteCommodity = (id, imgRelativePath) => {
     return (dispatch) => {
         const isConfirm = window.confirm('确认删除？');
         if (isConfirm) {
             axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/deletecommodity', {
-                id: id
+                id,
+                imgRelativePath,
             }).then(() => {
                 console.log("axios.post success");
             }).catch((err) => {

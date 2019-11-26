@@ -27,12 +27,15 @@ const selectedArrivedTrue = () => ({
 // 点击"确认送达"按钮时触发
 const onArrived = (orderId) => {
     return (dispatch) => {
-        axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/order/modifyordertoarrived', {orderId: orderId}).then((res) => {
-            console.log(res);
-            dispatch(_onArrivedToLocal(orderId));
-        }).catch((err) => {
-            console.log(err);
-        });
+        const confirm = window.confirm('确认送达？');
+        if (confirm) {
+            axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/order/modifyordertoarrived', {orderId: orderId}).then((res) => {
+                console.log(res);
+                dispatch(_onArrivedToLocal(orderId));
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
     }
 };
 

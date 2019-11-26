@@ -12,7 +12,8 @@ const defaultState = fromJS({
         sum: 1,
         isUnderRevision: false,
         isSeeMore: false,
-        imgUrl: ''
+        imgUrl: '',
+        imgRelativePath: ''
     },{
         id: 1,
         name: "炸鸡饭",
@@ -22,7 +23,8 @@ const defaultState = fromJS({
         describe: "暂无描述",
         isUnderRevision: false,
         isSeeMore: false,
-        imgUrl: ''
+        imgUrl: '',
+        imgRelativePath: ''
     },{
         id: 2,
         name: "烤肉拌饭",
@@ -33,7 +35,8 @@ const defaultState = fromJS({
         sum: 1,
         isUnderRevision: false,
         isSeeMore: false,
-        imgUrl: ''
+        imgUrl: '',
+        imgRelativePath: ''
     },{
         id: 3,
         name: "黑椒肥牛饭",
@@ -44,7 +47,8 @@ const defaultState = fromJS({
         sum: 1,
         isUnderRevision: false,
         isSeeMore: false,
-        imgUrl: ''
+        imgUrl: '',
+        imgRelativePath: ''
     },{
         id: 4,
         name: "麻辣火锅",
@@ -55,7 +59,8 @@ const defaultState = fromJS({
         sum: 1,
         isUnderRevision: false,
         isSeeMore: false,
-        imgUrl: ''
+        imgUrl: '',
+        imgRelativePath: ''
     },{
         id: 5,
         name: "鸡米花",
@@ -66,7 +71,8 @@ const defaultState = fromJS({
         sum: 1,
         isUnderRevision: false,
         isSeeMore: false,
-        imgUrl: ''
+        imgUrl: '',
+        imgRelativePath: ''
     }],
     revisionEnable: true,
     isShowMask: false,
