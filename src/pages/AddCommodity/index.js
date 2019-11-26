@@ -190,7 +190,7 @@ const mapDispatchToProps = (dispatch) => ({
         console.log('FormData 内容 : ');
         console.log('name 内容是 ：',param.get('name'));
         console.log('originalPrice 内容是 ：',param.get('originalPrice'));
-        console.log('CurrentPrice 内容是 ：',param.get('CurrentPrice'));
+        console.log('currentPrice 内容是 ：',param.get('currentPrice'));
         console.log('enable 内容是 ：',param.get('enable'));
         console.log('describe 内容是 ：',param.get('describe'));
         console.log('sum 内容是 ：',param.get('sum'));
