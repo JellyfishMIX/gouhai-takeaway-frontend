@@ -40,11 +40,12 @@ const onPost = (param) => {
             headers: {"Content-Type":"multipart/form-data"}
         };
 
-        axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/addcommodity', param,config).then(() => {
+        axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/commodity/addcommodity', param, config).then(() => {
             console.log("axios.post success");
         }).catch((err) => {
             console.log("errMsg: " + err.toString());
         });
+
         dispatch(onCancel());
     };
 };
