@@ -178,7 +178,7 @@ const mapDispatchToProps = (dispatch) => ({
         let param = new FormData();
         param.append('name', inputNameRef_file);
         param.append('originalPrice', inputOriginalPrice_file);
-        param.append('CurrentPrice', inputCurrentPrice_file);
+        param.append('currentPrice', inputCurrentPrice_file);
         param.append('enable', commodityList.enable);
         param.append('describe', commodityList.describe);
         param.append('sum', commodityList.sum);
