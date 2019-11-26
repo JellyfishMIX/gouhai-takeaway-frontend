@@ -175,10 +175,13 @@ const mapDispatchToProps = (dispatch) => ({
         let inputImgUrlRef_file = inputImgUrlRef.value;
         let inputImageRef_file = inputImageRef.files[0];
 
+        /*inputOriginalPrice_file = parseInt(inputOriginalPrice_file);
+        console.log(typeof(inputOriginalPrice_file));
+*/
         let param = new FormData();
         param.append('name', inputNameRef_file);
         param.append('originalPrice', inputOriginalPrice_file);
-        param.append('CurrentPrice', inputCurrentPrice_file);
+        param.append('currentPrice', inputCurrentPrice_file);
         param.append('enable', commodityList.enable);
         param.append('describe', commodityList.describe);
         param.append('sum', commodityList.sum);
@@ -190,7 +193,8 @@ const mapDispatchToProps = (dispatch) => ({
         console.log('FormData 内容 : ');
         console.log('name 内容是 ：',param.get('name'));
         console.log('originalPrice 内容是 ：',param.get('originalPrice'));
-        console.log('CurrentPrice 内容是 ：',param.get('CurrentPrice'));
+    /*    console.log(typeof(param.get('originalPrice')));*/
+        console.log('currentPrice 内容是 ：',param.get('currentPrice'));
         console.log('enable 内容是 ：',param.get('enable'));
         console.log('describe 内容是 ：',param.get('describe'));
         console.log('sum 内容是 ：',param.get('sum'));
