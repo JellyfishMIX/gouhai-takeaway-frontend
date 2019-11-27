@@ -79,6 +79,7 @@ export const checkout = (List) => {
         customerAddr: list.school, // 顾客地址
         totalPrice: list.totalPrice,  // 总价
         createTime: new Date(), // 下单时间
+        isArrived: false, // 是否送达
         // 订单已购商品列表
         orderCommodityList: []
     };
@@ -95,9 +96,7 @@ export const checkout = (List) => {
 
     console.log(submitList); // 该句留下，测试用
 
-
-
-   axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/order/addorder', submitList)
+   axios.post('http://39.97.254.25:8080/#/gouhai-takeaway/api/order/addorder', submitList)
         .then(res => {
             console.log(res);
         }).catch(err => {
