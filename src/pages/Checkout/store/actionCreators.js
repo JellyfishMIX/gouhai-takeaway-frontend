@@ -99,8 +99,10 @@ export const checkout = (List) => {
    axios.post('http://39.97.254.25:8080/#/gouhai-takeaway/api/order/addorder', submitList)
         .then(res => {
             console.log(res);
+            alert('下单成功！');
         }).catch(err => {
         console.log(err);
+        alert('下单失败！');
     })
 
 };

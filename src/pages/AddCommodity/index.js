@@ -55,6 +55,11 @@ class AddCommodity extends Component {
                             ref={(currentPrice) => this.inputCurrentPrice = currentPrice}
                         />
                     </CommodityPrice>
+                    <UploadImagesWrapper>
+                        <input className='input'
+                               ref={(file) => this.inputImageRef = file}
+                               type='file'/>
+                    </UploadImagesWrapper>
                     <CommodityDescribe>
                         <input
                             className="input"
@@ -97,11 +102,7 @@ class AddCommodity extends Component {
                             </Link>
                         </CancelArea>
                     </CommodityPoster>
-                    <UploadImagesWrapper>
-                        <input ref={(file) => this.inputImageRef = file}
-                               type='file'
-                               id='input-img'/>
-                    </UploadImagesWrapper>
+
 
                 </Container>
             )
@@ -182,7 +183,6 @@ const mapDispatchToProps = (dispatch) => ({
         }
 
         const commodityList = immutableCommodity.toJS();
-        // TODO : 是否要求每次提交必须有图片 ？
         // 点击确定 获取输入数据 同时 获取input file DOM
         // 创建 Form 对象，用于axios直接 POST
         // let inputNameRef_file = inputNameRef.value;
@@ -213,7 +213,6 @@ const mapDispatchToProps = (dispatch) => ({
         console.log('isSeeMore 内容是 ：', param.get('isSeeMore'));
         console.log('describe 内容是 ：', param.get('describe'));
         console.log('imageFile 内容是 ：', param.get('imageFile'));
-
         dispatch(actionCreators.onPost(param));
     },
 

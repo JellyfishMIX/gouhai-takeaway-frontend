@@ -80,7 +80,7 @@ const CommodityPrice = styled.div`
     }
 `;
 
-const CommodityDescribe = styled.div `
+const CommodityDescribe = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -145,7 +145,7 @@ const CommodityPoster = styled.div`
     }
 `;
 
-const PostArea = styled.div `
+const PostArea = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -156,7 +156,7 @@ const PostArea = styled.div `
         font-size: 20px;
     }
 `;
-const PostButton = styled.div `
+const PostButton = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -168,7 +168,7 @@ const PostButton = styled.div `
     color: #fff;
 `;
 
-const CancelArea = styled.div `
+const CancelArea = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -182,7 +182,7 @@ const CancelArea = styled.div `
         color: #777;
     }
 `;
-const CancelButton = styled.div `
+const CancelButton = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -196,9 +196,22 @@ const CancelButton = styled.div `
 `;
 
 const UploadImagesWrapper = styled.div`
-    width: 90%;
     background: white;
-
+    height: 60px;
+    width: 355px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .input {
+        margin: auto 0;
+        display: block;
+        width: 90%;
+        height: 35px;
+        font-size: 20px;            
+        box-sizing: border-box;
+        border: none;
+    }
 `;
 
 export {

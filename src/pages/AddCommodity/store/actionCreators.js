@@ -38,9 +38,9 @@ const onPost = (param) => {
         const config = {
             headers: {"Content-Type":"multipart/form-data"}
         };
-
         axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/commodity/addcommodity', param, config).then(() => {
             console.log("axios.post success");
+            alert('操作成功！');
         }).catch((err) => {
             console.log("errMsg: " + err.toString());
         });
