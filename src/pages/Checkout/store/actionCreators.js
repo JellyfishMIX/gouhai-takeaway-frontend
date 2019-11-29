@@ -96,7 +96,7 @@ export const checkout = (List) => {
 
     console.log(submitList); // 该句留下，测试用
 
-   axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/order/addorder', submitList)
+   axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/order/addorder', submitList)
         .then(res => {
             console.log(res);
             alert('下单成功！');

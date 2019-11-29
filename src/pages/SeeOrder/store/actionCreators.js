@@ -5,7 +5,7 @@ import {fromJS} from 'immutable';
 // 从服务器加载订单列表
 const loadOrderList = () => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/order/getorderlist').then((res) => {
+        axios.get('http://39.97.254.25:8080/gouhai-takeaway/api/order/getorderlist').then((res) => {
             console.log(res);
             dispatch(_loadOrderListToLocal(res.data.orderList));
         }).catch((err) => {
