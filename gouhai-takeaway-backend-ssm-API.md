@@ -43,7 +43,7 @@
      sum: int,	// 商品选购总和
      isUnderRevision: boolean,	// 是否处于编辑模式下
      isSeeMore: boolean,	// 是否处于气泡"查看更多"状态
-     imgURL: String	// 图片地址
+   	imageFile: File	// 图片文件
    }
    ```
 
