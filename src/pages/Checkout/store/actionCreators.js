@@ -102,7 +102,7 @@ export const checkout = (List) => {
             alert('下单成功！');
         }).catch(err => {
         console.log(err);
-        alert('下单失败！');
+        alert('抱歉，下单失败！');
     })
 
 };

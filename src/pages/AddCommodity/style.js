@@ -196,13 +196,15 @@ const CancelButton = styled.div`
 `;
 
 const UploadImagesWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
     background: white;
     height: 60px;
     width: 355px;
     border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     .input {
         margin: auto 0;
         display: block;
