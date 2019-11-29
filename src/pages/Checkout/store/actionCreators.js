@@ -71,14 +71,14 @@ export const checkout = (List) => {
     console.log(list);
 
     const time = dayjs(new Date());
-    const createTime = `${time.$y}-${time.$M + 1}-${time.$D} ${time.$H}:${time.$m}:${time.$s}`;
+    const createTime = `${time.$y}-${time.$M + 1}-${time.$D}   ${time.$H}:${time.$m}:${time.$s}`;
 
     let submitList = {
         customerName: list.personName, // 顾客姓名
         customerPhone: list.cellphoneNumber,    // 顾客手机号，请注意，该属性的值的数据类型为字符串
         customerAddr: list.school, // 顾客地址
         totalPrice: list.totalPrice,  // 总价
-        createTime: new Date(), // 下单时间
+        createTime: createTime, // 下单时间
         isArrived: false, // 是否送达
         // 订单已购商品列表
         orderCommodityList: []
@@ -96,7 +96,7 @@ export const checkout = (List) => {
 
     console.log(submitList); // 该句留下，测试用
 
-   axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/order/addorder', submitList)
+   axios.post('http://localhost:8080/gouhai_takeaway_backend_ssm_war_exploded/api/order/addorder', submitList)
         .then(res => {
             console.log(res);
             alert('下单成功！');
@@ -104,7 +104,6 @@ export const checkout = (List) => {
         console.log(err);
         alert('抱歉，下单失败！');
     })
-
 };
 
 
