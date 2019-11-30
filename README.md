@@ -1,8 +1,8 @@
 ## 够嗨美食城点餐系统-说明文档(前端部分)
 版本号 v1.0.0
-> 下单⻚⾯链接: http://39.97.254.25:8080/gouhai-takeaway/#/
-> 后台管理⻚⾯链接: http://39.97.254.25:8080/gouhai-takeaway/#/management
-> github仓库页链接: https://github.com/JellyfishMIX/gouhai-takeaway-frontend
+> 下单⻚⾯链接: http://39.97.254.25:8080/gouhai-takeaway/#/    
+> 后台管理⻚⾯链接: http://39.97.254.25:8080/gouhai-takeaway/#/management     
+> github仓库页链接: https://github.com/JellyfishMIX/gouhai-takeaway-frontend      
 
 > 本项目前后端分离开发，前端采用react相关技术栈
 
