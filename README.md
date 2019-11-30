@@ -82,7 +82,6 @@
   + Index.js # 入口文件
   + build # webpack打包后的bandle文件
   </br>
-  ![1ad44b72.png](:storage\f4488a99-a347-4bcd-974d-28263f991e24\d577c465.png)
 ---
 ### 开发过程中遇到的问题及解决方案
 1. immutable 不可变对象无法直接修改
