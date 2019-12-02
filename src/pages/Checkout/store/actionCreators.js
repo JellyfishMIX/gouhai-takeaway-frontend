@@ -96,14 +96,13 @@ export const checkout = (List) => {
 
     console.log(submitList); // 该句留下，测试用
 
-   axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/order/addorder', submitList)
-        .then(res => {
-            console.log(res);
-            alert('下单成功！');
-        }).catch(err => {
+    axios.post('http://39.97.254.25:8080/gouhai-takeaway/api/order/addorder', submitList).then(res => {
+        console.log(res);
+        alert('下单成功！');
+    }).catch(err => {
         console.log(err);
         alert('抱歉，下单失败！');
-    })
+    });
 };
 
 
