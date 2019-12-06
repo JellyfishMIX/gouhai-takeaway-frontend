@@ -10,7 +10,8 @@
 
 + ###  团队成员：
   + 前端
-    + CregskiN [CregskiN · GitHub](https://github.com/CregskiN)
+    + 前台购物、下单界面，后台图片上传控件 -- CregskiN [CregskiN · GitHub](https://github.com/CregskiN)
+    + 后台管理界面 -- JellyfishMIX [JellyfishMIX · GitHub](https://github.com/JellyfishMIX)
   + 后端
     + JellyfishMIX [JellyfishMIX · GitHub](https://github.com/JellyfishMIX)
   </br>
